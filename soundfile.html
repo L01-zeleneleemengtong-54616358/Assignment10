@@ -1,0 +1,67 @@
+//name: Zelene lee Meng Tong
+//SID: 54616358
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.6/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.16/addons/p5.sound.js"></script>
+    <script>
+        var song;
+        var amp;
+        var img;
+
+        function setup() {
+            createCanvas(200, 200);
+
+            amp = new p5.Amplitude();
+
+        }
+
+        function preload() {
+            song = loadSound("song.mp3");
+            img = loadImage("flower.png");
+        }
+
+        function draw() {
+          background(100);
+            drawButton();
+            var vol = amp.getLevel();
+            fill(255,0,255);
+            var diam = map(vol, 0, 0.3, 10, 100);
+           ellipse(width / 2, height / 2, diam, diam);
+        }
+
+        function drawButton() {
+            stroke(0)
+            fill(255);
+            rect(0, 180, 80, 20);
+            fill(0);
+            text("Press me!", 15, 195);
+
+        }
+
+        function mouseClicked() {
+            togglePlaying();
+
+        }
+
+
+        function togglePlaying() {
+            if (!song.isPlaying()) {
+                song.play();
+
+            } else {
+                song.pause();
+
+            }
+
+
+        }
+    </script>
+</head>
+
+
+
+</html>
